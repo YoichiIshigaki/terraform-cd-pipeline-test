@@ -1,4 +1,155 @@
-<h1>Hello world from custom Docker image</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./dist.css" rel="stylesheet">
 
-<p>This image is running on ECS, here's some information about this container and task:</p>
-
+		<style>
+			.carousel-open:checked + .carousel-item {
+				position: static;
+				opacity: 100;
+			}
+			.carousel-item {
+				-webkit-transition: opacity 0.6s ease-out;
+				transition: opacity 0.6s ease-out;
+			}
+			#carousel-1:checked ~ .control-1,
+			#carousel-2:checked ~ .control-2,
+			#carousel-3:checked ~ .control-3 {
+				display: block;
+			}
+			.carousel-indicators {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				position: absolute;
+				bottom: 2%;
+				left: 0;
+				right: 0;
+				text-align: center;
+				z-index: 10;
+			}
+			#carousel-1:checked ~ .control-1 ~ .carousel-indicators li:nth-child(1) .carousel-bullet,
+			#carousel-2:checked ~ .control-2 ~ .carousel-indicators li:nth-child(2) .carousel-bullet,
+			#carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet {
+				color: #2b6cb0;  /*Set to match the Tailwind colour you want the active one to be */
+			}
+		</style>
+</head>
+<body class="bg-white font-sans leading-normal tracking-normal">
+  <header class="bg-gray-600 h-16">
+      <p class="text-white text-3xl text-center p-4">hello</p>
+  </header>
+  <div class="carousel relative shadow-2xl bg-white">
+    <div class="carousel-inner relative overflow-hidden w-full md:max-h-screen">
+      <!--Slide 1-->
+      <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
+      <div class="carousel-item absolute opacity-0" style="height:75vh;">
+        <div class="block h-full w-full bg-indigo-500 text-white text-5xl text-center">Slide 1</div>
+      </div>
+      <label for="carousel-3" class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+      <label for="carousel-2" class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+      
+      <!--Slide 2-->
+      <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+      <div class="carousel-item absolute opacity-0" style="height:75vh;">
+        <div class="block h-full w-full bg-yellow-500 text-white text-5xl text-center">Slide 2</div>
+      </div>
+      <label for="carousel-1" class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+      <label for="carousel-3" class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label> 
+      
+      <!--Slide 3-->
+      <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+      <div class="carousel-item absolute opacity-0" style="height:75vh;">
+        <div class="block h-full w-full bg-green-500 text-white text-5xl text-center">Slide 3</div>
+      </div>
+      <label for="carousel-2" class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+      <label for="carousel-1" class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+  
+      <!-- Add additional indicators for each slide-->
+      <ol class="carousel-indicators">
+        <li class="inline-block mr-3">
+          <label for="carousel-1" class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+        </li>
+        <li class="inline-block mr-3">
+          <label for="carousel-2" class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+        </li>
+        <li class="inline-block mr-3">
+          <label for="carousel-3" class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+        </li>
+      </ol>
+      
+    </div>
+  </div>
+  <div class="group my-16 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+    <div class="md:flex">
+      <div class="md:flex-shrink-0">
+        <img class="filter grayscale-[80%] group-hover:filter-none transition-all duration-100 h-auto w-full md:object-cover md:w-64 md:h-64" src="https://img01.boo-log.com/usr/z/z/1/zz1100/10.jpg" alt="Man looking at item at a store">
+      </div>
+      <div class="p-4">
+        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Lovebites</div>
+        <a href="#" class="block mt-0.5 text-lg leading-tight font-medium text-black hover:underline">Finding customers for your new business</a>
+        <div>
+          <div class="h-16">
+            <!-- 全角44文字以上入れてはいけない。 -->
+            <p class="mt-2 text-gray-500">Lovebites (stylized as LOVEBITES) is a Japanese all-female heavy metal band, ...</p>
+          </div>
+          <p class="mt-2 duration-200 hover:scale-105 hover:bg-green-400 bg-green-300 text-white px-4 mx-1 w-auto rounded-xl shadow-md inline-block">#expert</p>
+          <p class="mt-2 duration-200 hover:scale-105 hover:bg-blue-400 bg-blue-300 text-white px-4 mx-1 w-auto rounded-xl shadow-md inline-block">#anime song</p>
+          <p class="mt-2 duration-200 hover:scale-105 hover:bg-gray-400 bg-gray-300 text-white px-4 mx-1 w-auto rounded-xl shadow-md inline-block">#heavy metal</p>
+          <p class="mt-2 duration-200 hover:scale-105 hover:bg--pink-400 bg-pink-300 text-white px-4 mx-1 w-auto rounded-xl shadow-md inline-block">#female band</p>
+        </div>
+        <div class="h-5"><span class="mt-4 mx-4 w-4 h-4 hover:scale-125 duration-150 block bg-like-button bg-no-repeat bg-contain "></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="group my-16 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+    <div class="md:flex">
+      <div class="md:flex-shrink-0">
+        <img class="filter grayscale-[80%] group-hover:filter-none transition-all duration-100 h-auto w-full md:object-cover md:w-64 md:h-64" src="https://c-cl.cdn.smule.com/rs-s77/arr/a2/95/b2b67f11-6284-464d-9b77-b2b19fe57d68.jpg" alt="Man looking at item at a store">
+      </div>
+      <div class="p-4">
+        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Nirvana</div>
+        <a href="#" class="block mt-0.5 text-lg leading-tight font-medium text-black hover:underline">Finding customers for your new business</a>
+        <div>
+          <div class="h-16">
+            <p class="mt-2 text-gray-500">Nirvana was an American rock band formed in Aberdeen, Washington in 1987. Founded by ...</p>
+          </div>
+          <p class="mt-2 duration-200 hover:scale-105 hover:bg-green-400 bg-green-300 text-white px-4 mx-1 w-auto rounded-xl shadow-md inline-block">#beginner</p>
+          <p class="mt-2 duration-200 hover:scale-105 hover:bg-blue-400 bg-blue-300 text-white px-4 mx-1 w-auto rounded-xl shadow-md inline-block">#underground</p>
+          <p class="mt-2 duration-200 hover:scale-105 hover:bg-gray-400 bg-gray-300 text-white px-4 mx-1 w-auto rounded-xl shadow-md inline-block">#Alternative Rock</p>
+          <p class="mt-2 duration-200 hover:scale-105 hover:bg--pink-400 bg-pink-300 text-white px-4 mx-1 w-auto rounded-xl shadow-md inline-block">#three-piece band</p>
+        </div>
+        <div class="h-5"><span class="mt-4 mx-4 w-4 h-4 hover:scale-125 duration-150 block bg-like-button bg-no-repeat bg-contain "></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="group my-16 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+    <div class="md:flex">
+      <div class="md:flex-shrink-0">
+        <img class="filter grayscale-[80%] group-hover:filter-none transition-all duration-100 h-auto w-full md:object-cover md:w-64 md:h-64" src="https://auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0308/users/2/5/7/8/art_blakey_moanin-img1075x923-15030579916chsjf25929.jpg" alt="Man looking at item at a store">
+      </div>
+      <div class="p-4">
+        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">BLACKMORE'S NIGHT</div>
+        <a href="#" class="block mt-0.5 text-lg leading-tight font-medium text-black hover:underline">Finding customers for your new business</a>
+        <div>
+          <div class="h-16">
+            <p class="mt-2 text-gray-500">Nirvana was an American rock band formed in Aberdeen, Washington in 1987. Founded by ...</p>
+          </div>
+          <p class="mt-2 duration-200 hover:scale-105 hover:bg-green-400 bg-green-300 text-white px-4 mx-1 w-auto rounded-xl shadow-md inline-block">#beginner</p>
+          <p class="mt-2 duration-200 hover:scale-105 hover:bg-blue-400 bg-blue-300 text-white px-4 mx-1 w-auto rounded-xl shadow-md inline-block">#underground</p>
+          <p class="mt-2 duration-200 hover:scale-105 hover:bg-gray-400 bg-gray-300 text-white px-4 mx-1 w-auto rounded-xl shadow-md inline-block">#Alternative Rock</p>
+          <p class="mt-2 duration-200 hover:scale-105 hover:bg--pink-400 bg-pink-300 text-white px-4 mx-1 w-auto rounded-xl shadow-md inline-block">#three-piece band</p>
+        </div>
+        <div class="h-5"><span class="mt-4 mx-4 w-4 h-4 hover:scale-125 duration-150 block bg-like-button bg-no-repeat bg-contain "></span></div>
+      </div>
+    </div>
+  </div>
+  <footer class="bg-gray-600 h-16">
+    <p class="text-white text-2xl text-center my-20">copyright 2021 yoichi ishigaki</p>
+  </footer>
+</body>
+</html>
